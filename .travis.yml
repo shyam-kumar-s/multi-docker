@@ -11,15 +11,9 @@ script:
 
 after_success:
     - docker build -t wakeupcolumn/multi-client ./client
-    - docker build -t wakeupcolumn/multi-nginx ./nginx
-    - docker build -t wakeupcolumn/multi-server ./server
-    - docker build -t wakeupcolumn/multi-worker ./worker
-
+    
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push wakeupcolumn/multi-client
-    - docker push wakeupcolumn/multi-nginx
-    - docker push wakeupcolumn/multi-server
-    - docker push wakeupcolumn/multi-worker 
     
 
 
